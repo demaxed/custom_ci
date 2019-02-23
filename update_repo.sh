@@ -13,7 +13,7 @@ if [$? !=0]; then
     exit 1
 fi
 
-HASH='echo $COMMIT | awk "{ print $2}"'
+HASH=`echo $COMMIT | awk "{ print $2}"`
 
 helper "can't pull from repo" git pull
 
@@ -23,7 +23,7 @@ if [$? !=0]; then
     exit 1
 fi
 
-NEWHASH='echo $COMMIT | awk "{ print $2 }"'
+NEWHASH=`echo $COMMIT | awk "{ print $2 }"`
 
 if [$NEWHASH != $HASH]; then
     popd 1> /dev/null
