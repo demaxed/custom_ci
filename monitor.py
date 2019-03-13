@@ -10,11 +10,7 @@ import helpers
 
 
 def commit_observe():
-    '''
-
-    parse command line arguments, checking repo's changes 
-
-    '''
+    '''parse command line arguments, checking repo's changes'''
     parser = argparse.ArgumentParser()
     parser.add_argument("--forwarder-server",
                     help="forwarder ussage host:port, " \
@@ -25,13 +21,11 @@ def commit_observe():
     parser.add_argument("repo", metavar="REPO", type=str,
                     help="path to the repo this will monitor")
     args = parser.parse_args()
-    forwarder_host, forwaeder_post = args.forwarder_server.split(":")
+    forwarder_host, forwarder_port = args.forwarder_server.split(":")
 
-    '''
-    
-    infinite loop
+    '''infinite non-blocking loop
+
     .sh script compares commits and return commit id
-
     '''
     while True:
         try:
